@@ -6,5 +6,7 @@ public class TestGit {
 		System.out.println("testBBB");
 		System.out.println("testAAAA");
 		System.out.println("-----------hot_fix-------------");
+		System.out.println("-----------哈哈-------------");
+
 	}
 }

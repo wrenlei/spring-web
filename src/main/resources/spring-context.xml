@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                  http://www.springframework.org/schema/beans/spring-beans.xsd
+                  http://www.springframework.org/schema/aop
+                  http://www.springframework.org/schema/aop/spring-aop.xsd
+                  http://www.springframework.org/schema/context
+                  http://www.springframework.org/schema/context/spring-context.xsd
+                  http://www.springframework.org/schema/tx
+                  http://www.springframework.org/schema/tx/spring-tx.xsd
+                  http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-3.1.xsd
+                  ">
+                      
+   	<!--Spring容器扫描包，排除Controller注解-->
+    <context:component-scan base-package="com.sl,com.ax,com.core">
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    
+    <!-- 默认处理异常 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+    	<!-- 为所有的异常定义默认的异常处理页面，exceptionMappings未定义的异常使用本默认配置 -->  
+    	<property name="defaultErrorView" value="page/error/defaultError"/>  
+    	<!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception -->  
+   	 	<property name="exceptionAttribute" value="ex"/>  
+    	<!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常页文件名作为值，将不同的异常映射到不同的页面上。-->  
+    	<property name="exceptionMappings">  
+       		<props>  
+            	<prop key="IOException">page/error/ioexp</prop>  
+            	<prop key="java.sql.SQLException">page/error/sqlexp</prop>  
+        	</props>  
+    	</property>  
+</bean> 
+
+</beans>

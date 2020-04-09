@@ -10,8 +10,10 @@
     <!--自动解析json等，引入jackson-databind依赖  -->
     <mvc:annotation-driven/>
      
-    <!--Spring容器扫描注解  -->
-    <context:component-scan base-package="com.sl,com.ax,com.core" />
+    <!--Spring容器扫描Controller注解，禁用默认过滤器-->
+    <context:component-scan base-package="com.sl,com.ax,com.core" use-default-filters="false">
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!--mvc视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

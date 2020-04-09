@@ -5,8 +5,8 @@
          
   <display-name>spring-web</display-name>
   
-  <!-- 从页面post传值到controller时汉字出现问号，注意拦截的顺序，放在web.xml里面的最上面 -->
-  <filter>
+  	<!-- 从页面post传值到controller时汉字出现问号，注意拦截的顺序，放在web.xml里面的最上面 -->
+	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
@@ -22,19 +22,29 @@
     	<filter-name>characterEncodingFilter</filter-name>
     	<url-pattern>/*</url-pattern>
   	</filter-mapping>
+  	
+  	<!-- 配置spring监听器 -->
+  	<context-param>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>classpath:spring-context.xml</param-value>
+  	</context-param>
+	<listener>
+	   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
   
-  <servlet>
-    <servlet-name>springDispatcherServlet</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-mvc.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>springDispatcherServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  
+    <!-- 配置spring的转发Servlet -->
+  	<servlet>
+    	<servlet-name>springDispatcherServlet</servlet-name>
+    	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    	<init-param>
+      		<param-name>contextConfigLocation</param-name>
+      		<param-value>classpath:spring-mvc.xml</param-value>
+   		 </init-param>
+    	<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>springDispatcherServlet</servlet-name>
+    	<url-pattern>/</url-pattern>
+  	</servlet-mapping>
+  	
 </web-app>

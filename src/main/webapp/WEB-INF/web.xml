@@ -5,7 +5,7 @@
          
   <display-name>spring-web</display-name>
   
-  <!-- 页面post传值出现问号，注意拦截的顺序，放在web.xml里面的最上面 -->
+  <!-- 从页面post传值到controller时汉字出现问号，注意拦截的顺序，放在web.xml里面的最上面 -->
   <filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

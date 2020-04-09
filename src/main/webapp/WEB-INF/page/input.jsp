@@ -8,11 +8,12 @@
 </head>
 <body>
 示例
-<form action="${ctx}/test/save" method="post">
+<form action="${ctx}/test/save" enctype="multipart/form-data" method="post">
 <br>id:&nbsp;&nbsp;&nbsp;<input name="id" value="1"/>
 <br>name:&nbsp;&nbsp;&nbsp;<input name="name" value="哈哈"/>
 <br>age:&nbsp;&nbsp;&nbsp;<input name="age" value="12"/>
 <br>birthday:&nbsp;&nbsp;&nbsp;<input name="birthday" value="2010-11-11"/>
+<br><input name="doc" type="file">
 <br><button type="submit">提交</button>
 </form>
 1111:${ctx}

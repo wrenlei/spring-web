@@ -67,6 +67,7 @@ public class TestController {
 		logger.info("name:"+test.getName());
 		logger.info("age:"+test.getAge());
 		logger.info("birthday:"+test.getBirthday());
+		logger.info("doc:"+test.getDoc().getOriginalFilename());
 	}
 	
 	@RequestMapping("/showDetail")

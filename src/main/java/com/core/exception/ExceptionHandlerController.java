@@ -1,18 +1,38 @@
-package com.sl.controller;
+package com.core.exception;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.apache.log4j.Logger;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@ControllerAdvice
 @Controller
-@RequestMapping("/testException")
-public class TestExceptionController {
+@RequestMapping("/test")
+public class ExceptionHandlerController {
 	
-	public static Logger logger=Logger.getLogger(TestExceptionController.class);
+	@ExceptionHandler(value={Exception.class})  
+    public String exp3(Exception ex,HttpServletRequest request) {  
+        request.setAttribute("ex", ex);  
+        return "page/error/defaultError3";  
+    }
+
+	@ExceptionHandler(value={IOException.class})  
+    public String exp(Exception ex,HttpServletRequest request) {  
+        request.setAttribute("ex", ex);  
+        return "page/error/ioexp3";  
+    }
+	
+	@ExceptionHandler(value={SQLException.class})  
+    public String exp2(Exception ex,HttpServletRequest request) {  
+        request.setAttribute("ex", ex);  
+        return "page/error/sqlexp3";   
+    } 
 	
 	@RequestMapping("/iOException")
 	@ResponseBody
@@ -40,10 +60,5 @@ public class TestExceptionController {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@RequestMapping("/aa")
-	public String getAa(){
-		return "page/aa";
 	}
 }

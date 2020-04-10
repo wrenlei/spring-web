@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK">
-<title>sql异常页面_2</title>
+<title>500异常页面</title>
 </head>
 <body>
-sql异常页面_2<br>
-    <% Exception ex = (Exception)request.getAttribute("ex"); %>
-    <H2>Exception: <%= ex.getMessage()%></H2>
-    <P/>
-    <% ex.printStackTrace(new java.io.PrintWriter(out)); %>
+    <H2>这是500异常页面</H2>
 </body>
 </html>

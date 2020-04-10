@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK">
-<title>sql异常页面_2</title>
+<title>IO异常页面_3</title>
 </head>
 <body>
-sql异常页面_2<br>
+IO异常页面_3<br>
     <% Exception ex = (Exception)request.getAttribute("ex"); %>
     <H2>Exception: <%= ex.getMessage()%></H2>
     <P/>

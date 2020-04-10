@@ -47,4 +47,18 @@
     	<url-pattern>/</url-pattern>
   	</servlet-mapping>
   	
+  	<!-- 没有全局异常处理的，则跳到该页面，页面不要放在WEB-INF下，否则无法访问到 -->
+  	<error-page>
+    	<error-code>500</error-code>
+    	<location>/500.jsp</location>
+	</error-page>
+	<error-page> 
+  		<exception-type>java.lang.Throwable</exception-type> 
+  		<location>/500.jsp</location> 
+	</error-page> 
+	<error-page> 
+  		<error-code>404</error-code> 
+  		<location>/404.jsp</location> 
+	</error-page> 
+  	
 </web-app>

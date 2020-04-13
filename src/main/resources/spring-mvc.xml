@@ -15,6 +15,16 @@
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*/get"/>
+   			<bean id="myInterceptor" class="com.sl.interceptor.MyInterceptor" />
+		</mvc:interceptor>
+   		<bean id="myInterceptor2" class="com.sl.interceptor.MyInterceptor2" />
+   		<bean id="myInterceptor3" class="com.sl.interceptor.MyInterceptor3" />
+	</mvc:interceptors>
+
     <!--mvc视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/"/>

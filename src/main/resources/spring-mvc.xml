@@ -24,6 +24,10 @@
     <context:component-scan base-package="com.sl,com.ax,com.core" use-default-filters="false">
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+    
+    <!-- 读取属性文件 -->
+    <context:property-placeholder location="classpath:common.properties,
+    										classpath:common2.properties"/>
 
 	<!-- 配置拦截器 -->
 	<mvc:interceptors>
@@ -44,7 +48,7 @@
     <!-- 上传文件限制 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!--上传文件的最大值，单位为字节 --> 
-		<property name="maxUploadSize" value="1048576"/>
+		<property name="maxUploadSize" value="${maxUploadSize}"/>
 		<!-- 上传文件的编码 -->
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>

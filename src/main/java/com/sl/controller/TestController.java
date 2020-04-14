@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,18 @@ public class TestController {
 	@Autowired
 	private ITestService testService;
 	
+	@Value("${url}")
+	private String url;
+	
+	@Value("${message}")
+	private String message;
+	
+	@Value("${port}")
+	private String port;
+	
+	@Value("${maxUploadSize}")
+	private String maxUploadSize;
+	
 	/**
 	 * 页面传的字符串类型的日期，在Controller中可以用Date类型接收
 	 * @param binder
@@ -35,6 +48,18 @@ public class TestController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
 		dateFormat.setLenient(false);  
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));//true:允许输入空值，false:不能为空值
+	}
+	
+	@RequestMapping("/getProperty")
+	@ResponseBody
+	public String getProperty() {
+		System.out.println("------------------------------------------------------");
+		System.out.println("url："+url);
+		System.out.println("message："+message);
+		System.out.println("port："+port);
+		System.out.println("maxUploadSize："+maxUploadSize);
+		System.out.println("------------------------------------------------------");
+		return "asasasas";
 	}
 	
 	@RequestMapping("/get")

@@ -21,6 +21,10 @@
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     
+    <!-- 读取属性文件 -->
+    <context:property-placeholder location="classpath:common.properties,
+    										classpath:common2.properties"/>
+    
     <!-- 默认处理异常 -->
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
     	<!-- 为所有的异常定义默认的异常处理页面，exceptionMappings未定义的异常使用本默认配置 -->  
